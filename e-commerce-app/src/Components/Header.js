@@ -23,8 +23,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   headerText: {
-    fontSize: 35,
+    fontSize: 25,
     color: colors.heavyBlue,
+    flexWrap:'wrap',
   },
 });
 

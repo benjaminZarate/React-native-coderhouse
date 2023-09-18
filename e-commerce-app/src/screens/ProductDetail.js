@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, StyleSheet } from 'react-native'
 import React from 'react'
 import { colors } from '../theme/colors'
 import { AntDesign } from '@expo/vector-icons';
@@ -13,15 +13,48 @@ const ProductDetail = ({route, navigation}) => {
             width='100%'
             height={200}
             source={{uri: item.thumbnail}}/>
-        <Text>{item.brand}</Text>
-        <Text>{item.title}</Text>
-        <Text>${item.price}</Text>
-        <Text>{Math.round((item.price * 100) / (100-item.discountPercentage))}</Text>
-        <AntDesign name="star" size={24} color="black" />
-        <Text>{item.rating}</Text>
-        <Text>{item.description}</Text>
+        <View style={styles.container}>
+
+          <Text style={styles.brand}>{item.brand}</Text>
+          <View style={styles.containerTitlePrice}>
+            <Text style={styles.font25}>{item.title}</Text>
+            <View style={styles.containerPrices}>
+              <Text style={[styles.container, styles.font25]}>${item.price}</Text>
+              <Text style={[styles.font25, styles.discountPrice]}>{Math.round((item.price * 100) / (100-item.discountPercentage))}</Text>
+              </View>
+
+          </View>
+          <View style={styles.containerPrices}>
+            <AntDesign name="star" size={24} color="black" />
+            <Text styles={[styles.container, styles.font25]}>{item.rating}</Text>
+          </View>
+          <Text>{item.description}</Text>
+        </View>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container:{
+    paddingHorizontal: 5,
+  },
+  brand:{
+    fontSize: 20
+  },
+  containerTitlePrice:{
+    flexDirection:'row',
+    justifyContent: 'space-between'
+  },
+  containerPrices:{
+    flexDirection: 'row',
+  },
+  font25:{
+    fontSize: 25
+  },
+  discountPrice:{
+    textDecorationLine: 'line-through',
+    color: 'grey'
+  }
+});
 
 export default ProductDetail
