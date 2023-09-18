@@ -4,6 +4,7 @@ import Search from '../Components/Search'
 import Header from '../Components/Header'
 import { products } from '../data/products'
 import ProductItem from '../Components/ProductItem'
+import ProductDetail from './ProductDetail'
 
 const Products = ({text}) => {
   const [categoryProd, setCategoryProd] = useState([]);
@@ -20,6 +21,7 @@ const Products = ({text}) => {
 
   return (
     <View>
+      <ProductDetail item={products[1]}/>
         <FlatList
             data={categoryProd}
             keyExtractor={products.id}
