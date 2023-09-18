@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: 20,
+    marginBottom: 10,
+    marginTop: 30,
   },
   input: {
     width: "78%",

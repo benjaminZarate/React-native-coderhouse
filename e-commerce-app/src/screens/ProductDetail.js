@@ -2,10 +2,13 @@ import { View, Text, Image } from 'react-native'
 import React from 'react'
 import { colors } from '../theme/colors'
 import { AntDesign } from '@expo/vector-icons';
+import Header from '../Components/Header';
 
-const ProductDetail = ({item}) => {
+const ProductDetail = ({route, navigation}) => {
+  const {item} = route.params;
   return (
     <View>
+      <Header navigation={navigation} title={item.title}/>
         <Image 
             width='100%'
             height={200}

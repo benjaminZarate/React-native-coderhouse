@@ -1,15 +1,20 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { colors } from '../theme/colors'
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const ProductItem = ({item}) => {
+const ProductItem = ({item, navigation}) => {
   return (
     <View style={styles.container}>
+      <Pressable
+      onPress={() => navigation.navigate("productDetail", {item})}>
         <Image
           height={90}
           width={90}
           source={{ uri: item.thumbnail }}
         />
+      </Pressable>
         <Text style={styles.text}
           numberOfLines={2}
           adjustsFontSizeToFit={true}

@@ -5,8 +5,10 @@ import Header from '../Components/Header'
 import { products } from '../data/products'
 import ProductItem from '../Components/ProductItem'
 import ProductDetail from './ProductDetail'
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Products = ({text}) => {
+const Products = ({text, navigation}) => {
   const [categoryProd, setCategoryProd] = useState([]);
 
   useEffect(() => {
@@ -21,11 +23,10 @@ const Products = ({text}) => {
 
   return (
     <View>
-      <ProductDetail item={products[1]}/>
         <FlatList
             data={categoryProd}
             keyExtractor={products.id}
-            renderItem={({ item }) => <ProductItem item={item} />}
+            renderItem={({ item }) => <ProductItem item={item} navigation={navigation}/>}
             numColumns={2}
         />  
     </View>
