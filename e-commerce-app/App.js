@@ -2,12 +2,13 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { colors } from './src/theme/colors';
 import RootNavigation from './src/navigation/RootNavigation';
 import { NavigationContainer } from "@react-navigation/native";
+import TabNavigation from './src/navigation/TabNavigation';
 
 export default function App() {
 
   return (
     <NavigationContainer>
-      <RootNavigation />
+      <TabNavigation />
     </NavigationContainer>
   );
 }
