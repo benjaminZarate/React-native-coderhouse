@@ -3,6 +3,7 @@ import React from 'react'
 import { colors } from '../theme/colors'
 import { AntDesign } from '@expo/vector-icons';
 import Header from '../Components/Header';
+import AddCartButton from '../Components/AddCartButton';
 
 const ProductDetail = ({route, navigation}) => {
   const {item} = route.params;
@@ -14,21 +15,25 @@ const ProductDetail = ({route, navigation}) => {
             height={200}
             source={{uri: item.thumbnail}}/>
         <View style={styles.container}>
-
-          <Text style={styles.brand}>{item.brand}</Text>
           <View style={styles.containerTitlePrice}>
-            <Text style={styles.font25}>{item.title}</Text>
-            <View style={styles.containerPrices}>
-              <Text style={[styles.container, styles.font25]}>${item.price}</Text>
-              <Text style={[styles.font25, styles.discountPrice]}>{Math.round((item.price * 100) / (100-item.discountPercentage))}</Text>
+            <View>
+              <Text style={styles.discountPrice}>${Math.round((item.price * 100) / (100-item.discountPercentage))}</Text>
+              <View style={{flexDirection: 'row'}}>
+                <Text style={{fontSize: 35, fontWeight: '500'}}>${item.price}</Text>
+                {item.discountPercentage > 0 ? 
+                <Text style={{paddingTop: 15, fontSize: 15, color: colors.mediumBlue, fontWeight: '400'}}>{Math.round(item.discountPercentage)}% off</Text>
+                  : <></>
+              }
               </View>
+            </View>
+            <View style={{flexDirection: 'row', paddingTop: 5,paddingRight:5, justifyContent:'flex-end'}}>
+              <AntDesign name="star" size={24} color={colors.lightBlue} style={{paddingHorizontal: 5}} />
+              <Text style={{fontSize: 20}}>{item.rating}</Text>
+            </View>
 
           </View>
-          <View style={styles.containerPrices}>
-            <AntDesign name="star" size={24} color="black" />
-            <Text styles={[styles.container, styles.font25]}>{item.rating}</Text>
-          </View>
-          <Text>{item.description}</Text>
+          <Text style={{paddingTop: 10, fontSize:20}}>{item.description}</Text>
+          <AddCartButton/>
         </View>
     </View>
   )
@@ -39,11 +44,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
   },
   brand:{
-    fontSize: 20
+    fontSize: 15
   },
   containerTitlePrice:{
     flexDirection:'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+
   },
   containerPrices:{
     flexDirection: 'row',
@@ -53,7 +59,8 @@ const styles = StyleSheet.create({
   },
   discountPrice:{
     textDecorationLine: 'line-through',
-    color: 'grey'
+    color: 'grey',
+    fontSize: 20
   }
 });
 

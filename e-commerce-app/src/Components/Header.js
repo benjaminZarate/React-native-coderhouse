@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: colors.heavyBlue,
     flexWrap:'wrap',
+    maxWidth: '100%'
   },
 });
 
