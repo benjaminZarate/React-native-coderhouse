@@ -2,11 +2,14 @@ import { View, Text, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
 import { Feather } from '@expo/vector-icons';
 import { colors } from '../theme/colors';
+import {productsInCart} from '../data/cart'
 
 const AddCartButton = ({item}) => {
   return (
     <Pressable
-    onPress={() => console.log("pressed")}>
+    onPress={() => {
+      productsInCart.push(item);
+      }}>
         <View style={styles.container}>
         <Feather name="shopping-cart" size={36} color={colors.white} />
         <Text style={styles.carText}>Add To Cart</Text>
