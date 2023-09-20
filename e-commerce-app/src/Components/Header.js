@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: colors.heavyBlue,
     flexWrap:'wrap',
-    maxWidth: '100%'
+    maxWidth: '100%',
+    fontFamily: "InclusiveSans"
   },
 });
 

@@ -35,7 +35,9 @@ const styles = StyleSheet.create({
     carText:{
         paddingLeft: 10,
         fontSize: 25,
-        color: colors.white
+        color: colors.white,
+        fontFamily: "InclusiveSans",
+        fontWeight: '800',
     }
 });
 

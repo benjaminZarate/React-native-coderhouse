@@ -42,8 +42,9 @@ const styles = StyleSheet.create({
     text:{
       paddingRight: 5,
       paddingLeft: 5,
-        fontSize:20,
+        fontSize:16,
         fontWeight: "600",
         flexWrap: 'wrap',
+        fontFamily: "RobotoMono",
     },
 })

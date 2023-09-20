@@ -19,20 +19,20 @@ const ProductDetail = ({route, navigation}) => {
             <View>
               <Text style={styles.discountPrice}>${Math.round((item.price * 100) / (100-item.discountPercentage))}</Text>
               <View style={{flexDirection: 'row'}}>
-                <Text style={{fontSize: 35, fontWeight: '500'}}>${item.price}</Text>
+                <Text style={{fontSize: 35, fontWeight: '500', fontFamily:"RobotoMono"}}>${item.price}</Text>
                 {item.discountPercentage > 0 ? 
-                <Text style={{paddingTop: 15, fontSize: 15, color: colors.mediumBlue, fontWeight: '400'}}>{Math.round(item.discountPercentage)}% off</Text>
+                <Text style={{paddingTop: 15, fontSize: 15, color: colors.mediumBlue, fontWeight: '400', fontFamily:"RobotoMono"}}>{Math.round(item.discountPercentage)}% off</Text>
                   : <></>
               }
               </View>
             </View>
             <View style={{flexDirection: 'row', paddingTop: 5,paddingRight:5, justifyContent:'flex-end'}}>
               <AntDesign name="star" size={24} color={colors.lightBlue} style={{paddingHorizontal: 5}} />
-              <Text style={{fontSize: 20}}>{item.rating}</Text>
+              <Text style={{fontSize: 20, fontFamily: "RobotoMono"}}>{item.rating}</Text>
             </View>
 
           </View>
-          <Text style={{paddingTop: 10, fontSize:20}}>{item.description}</Text>
+          <Text style={{paddingTop: 10, fontSize:20, fontFamily: "RobotoMono"}}>{item.description}</Text>
           <AddCartButton/>
         </View>
     </View>
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
   discountPrice:{
     textDecorationLine: 'line-through',
     color: 'grey',
-    fontSize: 20
+    fontSize: 20,
+    fontFamily: "RobotoMono"
   }
 });
 
