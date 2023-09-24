@@ -1,17 +1,18 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native'
 import React from 'react'
 import { colors } from '../theme/colors'
 import { AntDesign } from '@expo/vector-icons';
 import Header from '../Components/Header';
 import AddCartButton from '../Components/AddCartButton';
+import { useSelector } from 'react-redux';
 
-const ProductDetail = ({route, navigation}) => {
-  const {item} = route.params;
+const ProductDetail = ({navigation}) => {
+  const item = useSelector(state => state.homeSlice.productPressed);
   return (
     <View>
       <Header navigation={navigation} title={item.title}/>
         <Image 
-            width='100%'
+            width={Dimensions.get('window').width}
             height={200}
             source={{uri: item.thumbnail}}/>
         <View style={styles.container}>

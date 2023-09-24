@@ -3,12 +3,24 @@ import React from 'react'
 import { colors } from '../theme/colors'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProductPressed } from '../redux/slice/homeSlice';
 
 const ProductItem = ({item, navigation}) => {
+  
+  const dispatch = useDispatch();
+  
+  const onHandleItem = () => {
+    dispatch(setProductPressed(item));
+    navigation.navigate("productDetail");
+  }
+
   return (
     <View style={styles.container}>
       <Pressable
-      onPress={() => navigation.navigate("productDetail", {item})}>
+      onPress={() => {
+        onHandleItem();
+      }}>
         <Image
           height={90}
           width={90}

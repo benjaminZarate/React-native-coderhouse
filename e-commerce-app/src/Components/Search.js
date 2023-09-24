@@ -1,12 +1,29 @@
 import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import {colors} from '../theme/colors.js'
+import { useDispatch, useSelector } from 'react-redux';
+import { setProductsList } from '../redux/slice/homeSlice.js';
 
-const Search = ({text, setText}) => {
+const Search = () => {
+  const [text, setText] = useState("");
+
+  const dispatch = useDispatch();
+  const allProducts = useSelector(state => state.homeSlice.allProducts);
+
+  useEffect(() => {
+    if(text) {
+      const titleProduct = allProducts.filter((el) => el.title.toLowerCase().includes(text));
+      dispatch(setProductsList(titleProduct));
+    }else {
+      dispatch(setProductsList(allProducts));  
+    }
+  });
+
   const clearText = () => 
   {
-    setText(null);
+    dispatch(setProductsList(allProducts));
+    setText("");
   }
   return (
     <View style= {styles.container}>

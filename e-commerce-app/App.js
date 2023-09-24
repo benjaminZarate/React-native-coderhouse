@@ -3,6 +3,8 @@ import { colors } from './src/theme/colors';
 import RootNavigation from './src/navigation/RootNavigation';
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+import { store } from './src/redux/store';
+import { Provider } from 'react-redux';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -15,9 +17,11 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <RootNavigation />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <RootNavigation />
+      </NavigationContainer>
+    </Provider>
   );
 }
 
