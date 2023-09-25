@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { store } from './src/redux/store';
 import { Provider } from 'react-redux';
+import TabNav from './src/navigation/TabNav';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -19,7 +20,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <RootNavigation />
+        <TabNav />
       </NavigationContainer>
     </Provider>
   );
