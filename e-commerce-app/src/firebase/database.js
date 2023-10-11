@@ -1,0 +1,1 @@
+const base_url = "https://e-commerce-react-native-7e80a-default-rtdb.firebaseio.com"
